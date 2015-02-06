@@ -23,10 +23,10 @@ get_who <- function(by, length) {
 }
 
 get_animals <- function() {
-  if (.Platform$OS.type == "windows") {
-    # Find animals with unicode characters in them and remove
-    unicode_animals <- grep("[^\\x01-\\x7f]", animals, perl = TRUE)
-    animals <- animals[-unicode_animals]
-  }
-  animals
+#   if (.Platform$OS.type == "windows") {
+#     # Find animals with unicode characters in them and remove
+#     unicode_animals <- grep("[^\\x01-\\x7f]", animals, perl = TRUE)
+#     animals <- animals[-unicode_animals]
+#   }
+  iconv(animals, to = "UTF-8")
 }
